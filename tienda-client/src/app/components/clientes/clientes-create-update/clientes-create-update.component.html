@@ -1,0 +1,113 @@
+<div class="card">
+  <div class="card-header">
+    <div class="d-flex flex-row">
+      <div class="col">
+        <h4>{{ title }}</h4>
+      </div>
+      <div class="d-flex flex-row-reverse">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          (click)="regresar()"
+        >
+          <fa-icon [icon]="faUndo"></fa-icon>
+          Regresar
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <form
+      name="editForm"
+      role="form"
+      novalidate
+      (ngSubmit)="save()"
+      [formGroup]="editForm"
+    >
+      <div class="row">
+        <div class="form-group col-md">
+          <label for="exampleFormControlInput1">Nombres</label>
+          <input
+            formControlName="nombres"
+            type="text"
+            class="form-control"
+            id="nombres"
+            placeholder="¿Como se llama el cliente?"
+          />
+        </div>
+
+        <div class="form-group col-md">
+          <label for="exampleFormControlInput1">Apellidos</label>
+          <input
+            formControlName="apellidos"
+            type="text"
+            class="form-control"
+            id="apellidos"
+            placeholder="¿Apellidos del cliente?"
+          />
+        </div>
+
+        
+      </div>
+
+      <div class="row">
+
+        <div class="form-group col-md">
+          <label for="exampleFormControlInput1">Identificacion</label>
+          <input
+            formControlName="identificacion"
+            type="text"
+            class="form-control"
+            id="identificacion"
+            placeholder="Numero Identificacion del cliente"
+          />
+        </div>
+
+
+        <div class="form-group col-md">
+          <label for="exampleFormControlInput1">Telefono</label>
+          <input
+            formControlName="telefono"
+            type="number"
+            class="form-control"
+            id="telefono"
+            placeholder="Numero de Telefono del cliente"
+          />
+        </div>
+
+        
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md">
+          <label for="exampleFormControlInput1">Direccion</label>
+          <input
+            formControlName="direccion"
+            type="text"
+            class="form-control"
+            id="direccion"
+            placeholder="Correo electronico del cliente"
+          />
+        </div>
+
+        <div class="form-group col-md">
+          <label for="exampleFormControlInput1">Email</label>
+          <input
+            formControlName="email"
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="Correo electronico del cliente"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary col-md-4 text-center">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

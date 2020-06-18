@@ -1,0 +1,82 @@
+<div class="card">
+  <div class="card-header">
+    <div class="d-flex flex-row">
+      <div class="col"><h4>Lista de Clientes</h4></div>
+      <div class="d-flex flex-row-reverse">
+        <button
+          type="button"
+          class="btn btn-outline-success"
+          routerLink="/crearCliente"
+        >
+          <fa-icon [icon]="faPlus"></fa-icon>
+          Crear Cliente
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div
+      class="alert alert-warning"
+      id="no-result"
+      *ngIf="clientes?.length === 0"
+    >
+      <span>No existen clientes en la base de datos.</span>
+    </div>
+
+    <div
+      class="table-responsive"
+      id="entities"
+      *ngIf="clientes && clientes.length > 0"
+    >
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">Id</th>
+            <th class="text-center" scope="col">Apellidos</th>
+            <th class="text-center" scope="col">Nombres</th>
+            <th class="text-center" scope="col">Direccion</th>
+            <th class="text-center" scope="col">Email</th>
+            <th class="text-center" scope="col">Identificacion</th>
+            <th class="text-center" scope="col">Telefono</th>
+            <th class="text-center" scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <th class="text-center" scope="row">{{ cliente.idcliente ? cliente.idcliente : 'N/A' }}</th>
+            <td class="text-center">
+              {{ cliente.apellidos ? cliente.apellidos : 'N/A'}}
+            </td>
+            <td class="text-center">
+              {{ cliente.nombres ? cliente.nombres : 'N/A' }}
+            </td>
+            <td class="text-center">{{ cliente.direccion ? cliente.direccion : 'N/A' }}</td>
+            <td class="text-center">
+              {{ cliente.email ? cliente.email : 'N/A' }}
+            </td>
+            <td class="text-center">
+              {{ cliente.identifiacion ? cliente.identifiacion : 'N/A' }}
+            </td>
+            <td class="text-center">
+              {{ cliente.telefono ? cliente.telefono : 'N/A' }}
+            </td>
+            <td class="text-center">
+              <button
+                class="btn btn-outline-info mr-1"
+                (click)="modificar(cliente)"
+              >
+                <fa-icon [icon]="faPencilAlt"></fa-icon>
+              </button>
+              <button
+                (click)="eliminar(cliente)"
+                class="btn btn-outline-danger"
+              >
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

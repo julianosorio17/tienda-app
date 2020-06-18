@@ -1,0 +1,74 @@
+<div class="card">
+  <div class="card-header">
+    <div class="d-flex flex-row">
+      <div class="col"><h4>List de Productos</h4></div>
+      <div class="d-flex flex-row-reverse">
+        <button
+          type="button"
+          class="btn btn-outline-success"
+          routerLink="/crearProducto"
+        >
+          <fa-icon [icon]="faPlus"></fa-icon>
+          Agregar Producto
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div
+      class="alert alert-warning"
+      id="no-result"
+      *ngIf="productos?.length === 0"
+    >
+      <span>No hay productos disponibles.</span>
+    </div>
+
+    <div
+      class="table-responsive"
+      id="entities"
+      *ngIf="productos && productos.length > 0"
+    >
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">Id</th>
+            <th class="text-center" scope="col">Nombre</th>
+            <th class="text-center" scope="col">Código</th>
+            <th class="text-center" scope="col">Stock</th>
+            <th class="text-center" scope="col">Valor Unidad</th>
+            <th class="text-center" scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let productos of productos">
+            <th class="text-center" scope="row">{{ productos.idproducto }}</th>
+            <td class="text-center">
+              {{ productos.nombre }}
+            </td>
+            <td class="text-center">
+              {{ productos.codigo }}
+            </td>
+            <td class="text-center">{{ productos.stock | number }}</td>
+            <td class="text-center">
+              {{ productos.valorunidad | currency }}
+            </td>
+            <td class="text-center">
+              <button
+                class="btn btn-outline-info mr-1"
+                (click)="modificar(productos)"
+              >
+                <fa-icon [icon]="faPencilAlt"></fa-icon>
+              </button>
+              <button
+                (click)="eliminar(productos)"
+                class="btn btn-outline-danger"
+              >
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

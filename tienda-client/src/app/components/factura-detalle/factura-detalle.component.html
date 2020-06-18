@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header">
+    <div class="d-flex flex-row">
+      <div class="col">
+        <h4>Detalle Factura Numero: {{ idFactura }}</h4>
+        
+      </div>
+      <div class="d-flex flex-row-reverse">
+        <button
+        (click)="regresar()"
+          type="button"
+          class="btn btn-outline-success"
+        >
+          <fa-icon [icon]="faUndo"></fa-icon>
+          Volver a Facturas
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div
+      class="alert alert-warning"
+      id="no-result"
+      *ngIf="facturas?.length === 0"
+    >
+      <span>No existe detalle de esta factura en la base de datos.</span>
+    </div>
+
+    <div
+      class="table-responsive"
+      id="entities"
+      *ngIf="facturas && facturas.length > 0"
+    >
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">Id Producto</th>
+            <th class="text-center" scope="col">Valor unidad</th>
+            <th class="text-center" scope="col">Valor Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detalle of detalle">
+            <th class="text-center" scope="row">
+              {{ detalle.idfactura ? detalle.idfactura : "N/A" }}
+            </th>
+
+            <td class="text-center">{{ detalle.valorunidad | currency }}</td>
+
+            <td class="text-center">{{ detalle.valortotal | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

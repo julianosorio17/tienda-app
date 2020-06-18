@@ -1,0 +1,58 @@
+<div class="card">
+    <div class="card-header">
+      <div class="d-flex flex-row">
+        <div class="col"><h4>Lista de Facturas</h4></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div
+        class="alert alert-warning"
+        id="no-result"
+        *ngIf="facturas?.length === 0"
+      >
+        <span>No existen facturas en la base de datos.</span>
+      </div>
+  
+      <div
+        class="table-responsive"
+        id="entities"
+        *ngIf="facturas && facturas.length > 0"
+      >
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">Id Factura</th>
+              <th class="text-center" scope="col">Fecha Venta</th>
+              <th class="text-center" scope="col">Cliente</th>
+              <th class="text-center" scope="col">Valor Total</th>
+              <th class="text-center" scope="col">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let factura of facturas">
+              <th class="text-center" scope="row">{{ factura.idfactura ? factura.idfactura : 'N/A' }}</th>
+              <td class="text-center">
+                {{ factura.fechaventa | date:'short'}}
+              </td>
+              <td class="text-center">
+                {{ factura.idcliente ? factura.idcliente : 'N/A' }}
+              </td>
+              <td class="text-center">{{ factura.valortotal | currency }}</td>
+              
+              
+              <td class="text-center">
+
+                <button
+                  (click)="verDetalle(factura)"
+                  class="btn btn-outline-primary"
+                >
+                  <fa-icon [icon]="faEye"></fa-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
